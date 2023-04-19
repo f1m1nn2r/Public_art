@@ -3,5 +3,5 @@ var lineDashed = document.querySelectorAll('.bot-right .line_dash');
 
 for(var i=0; i<sc01_p.length; i++){
     var sc01_p_width = sc01_p[i].clientWidth;
-    lineDashed[i].style.width = "calc("+100%+" - ${sc01_p_width}px)";
+    lineDashed[i].style.width = `calc(100% - ${sc01_p_width}px)`;
 }

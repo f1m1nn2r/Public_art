@@ -2,7 +2,9 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 $inter:'Inter', sans-serif;
+$noto:'Noto Sans KR', sans-serif;
 $black:#000;
 $grey:#999;
 $basic:#eee;
@@ -13,11 +15,16 @@ $easing:cubic-bezier(0.215, 0.61, 0.355, 1);
 @mixin dis-flex($ai:null, $jc:null, $fl:null, $gap:null){display:flex; align-items:$ai; justify-content:$jc; flex-flow:$fl; gap:$gap;}
 @mixin dis-grid($num1:null, $num:null){display:grid; grid-template-columns:repeat($num1, $num2 + #{fr})}
 @mixin pt_abs($pt:null, $top:null, $rg:null, $bt:null, $lf:null, $zd:null){position:$pt; top:$top; right:$rg; bottom:$bt; left:$lf; z-index:$zd;}
+@mixin expl_comm(){line-height:1.66; @include font(clamp(0.95rem, 1.01vw, 1.5vw), 400, $noto, $black);}
 
-body{margin:0; padding:0; @include font(14px, null, $inter, null); background:#eee; border:1px solid #000;}
+body{margin:0; padding:0; overflow-x:hidden; @include font(14px, null, $inter, null); background:#eee; border:1px solid #000;}
 *{margin:0; padding:0; box-sizing:border-box;}
 ul, ol{list-style:none;}
 a{text-decoration:none; color:$black;}
+
+.s_comm{@include font(18px, 500, null, $grey);}
+.m_comm{@include font(40px, 600, $noto, $black);}
+.b_comm{line-height:0.9; @include font(clamp(5rem, 7.5vw, 8vw), 600, null, $black); text-transform:uppercase;}
 
 .span_comm{display:block; position:relative;}
 .virtual{content:""; position:absolute;}
@@ -69,39 +76,115 @@ a{text-decoration:none; color:$black;}
                     &:first-child, &:last-child{column-gap:236px;}
                 }
             }
-            .b_tit{@include dis-flex(center, null, null, null); padding:10px 15px 10px 0; border-bottom:1px solid $black;
+            .b_tit{@include dis-flex(center, space-between, null, null); padding:10px 15px 10px 0; border-bottom:1px solid $black;
                 .txt{
-                    h1{line-height:147px; @include dis-flex(null, null, null, null); @include font(180px, 600, null, $black); text-transform:uppercase; letter-spacing:-2px;
+                    h1{@include dis-flex(null, null, null, null); letter-spacing:-2px;
                         span{@extend .span_comm; @include font(null, null, $inter, null);}
                         .margin{margin:20px;}
                     }
                 }
-                .circle{@include conSize(630px, 270px); background:$black; border-radius:140px;}
+                .circle{@include conSize(34.54%, clamp(9rem, 14.55vw, 15.5vw)); background:$black; border-radius:140px;}
             }
         }
         .bot{@include dis-flex(null, null, null, null); padding:20px; column-gap:20px;
             &-left{flex:0.6; @include dis-flex(null, null, null, null);
-                .s_txt{@include font(22px, 400, null, null); writing-mode:vertical-lr; text-orientation:sideways-right;
+                .s_txt{@include expl_comm(); writing-mode:vertical-lr; text-orientation:sideways-right;
                     p{
+                        &:first-child{line-height:1;}
                         &:last-child{line-height:36px}
                     }
                 }
-                .r_txt{
+                .r_txt{@include conSize(100%, null);
                     .img-box{
                         img{@include conSize(100%, null); filter:grayscale(1);}
                         .deco{@include conSize(100%, 60px); margin:20px 0 0 0; background:$black;}
                     }
                     .txt-box{margin:20px 0 0 0;
-                        h1{line-height:36px; @include font(22px, 400, null, null);}
+                        h1{@include expl_comm();}
                     }
                 }
             }
-            &-right{flex:0.4; @include dis-flex(null, null, column, 20px);
+            &-right{flex:0.4; @include dis-flex(null, null, column, 25px);
                 div{@include dis-flex(center, null, null, null); position:relative;
-                    p{position:relative; z-index:10; padding:10px; @include font(50px, 500, null, null); background:$basic; border:1px solid $black; border-right:0; border-bottom:0;}
+                    p{position:relative; z-index:10; padding:10px; @include font(clamp(1.5rem, 2.16vw, 2.5vw), 500, null, null); background:$basic; border:1px solid $black; border-right:0; border-bottom:0;}
                     .line_dash{ @include pt_abs(absolute, null, 0, null, null, null); border-bottom:1px dashed $black;}
                 }
             }
         }
     }
 }
+/*** 섹션01 끝 ***/
+
+/*** 섹션02 시작 ***/
+.section02{
+    &-inner{
+        .top{@include dis-flex(null, space-between, null, 160px); padding:40px 0 40px; background:url('./img/line_deco.png') right top no-repeat; background-size:840px;
+            &-left{@include conSize(65.705%, null); @include dis-flex(null, null, null, 80px);
+                .deco{@include conSize(60px, 935px); margin:8px 0 0 0; background:$black;}
+                .con-box{@include conSize(100%, null);
+                    & > h1{margin:0 0 50px -9px;}
+                    .txt{
+                        span{margin:0 0 0 3px;}
+                        p{@include expl_comm(); margin:25px 0 41px;}
+                        img{@include conSize(100%, null); filter:grayscale(1)}
+                    }
+                }
+            }
+            &-right{@include conSize(34.295%, null); @include dis-flex(flex-end, null, null, null);
+                .deco{@include conSize(100%, 60px); background:$black;}
+            }
+        }
+        .bot{@include dis-flex(null, space-between, null, null); padding:110px 0 80px; background:url('./img/line_deco2.png') right top no-repeat; background-size:848px;
+            &-left{@include conSize(calc(100% - 145px), null);
+                .con-box{
+                    .txt{@include dis-flex(null, space-between, null, null);
+                        .deco{@include conSize(475px, 60px); background:$black;}
+                        div{text-align:right;
+                            span{margin:0 3px 0 0;}
+                            p{@include expl_comm(); margin:25px 0 41px;}
+                        }
+                    }
+                    .img-box{width:62.279%; margin:0 0 0 7.535vw;
+                        img{@include conSize(100%, null); filter:grayscale(1);}
+                    }
+                }
+            }
+            &-right{@include conSize(60px, 935px); background:$black;}
+        }
+    }
+}
+/*** 섹션02 끝 ***/
+
+/*** 섹션03 시작 ***/
+.section03{
+    &-inner{
+        .top{@include dis-flex(null, null, null, null); border-top:1px solid $black; border-bottom:1px solid $black;
+            &-left{flex:1; @include dis-flex(flex-end, null, null, null); position:relative;
+                .border-box{@include conSize(100%, 100%); @include pt_abs(absolute, null, null, null, null, null); border:50px solid $black; border-right:0;} 
+                .semicircle{@include conSize(50%, 100%); @include pt_abs(absolute, 0, 0, null, null, null); border-top-left-radius:1000px; border-bottom-left-radius:1000px; mix-blend-mode:difference; background:#eee;}
+                h1{@include conSize(100%, null); position:relative; z-index:99; margin:0 0 -15px 50px; font-size:clamp(9rem, 9.69vw, 10vw); color:#eee; mix-blend-mode:difference;
+                    p{@include dis-flex(null, null, null, null);
+                        &:last-child{justify-content:flex-end; margin-right:-18%;}
+                    }
+                }
+            }
+            &-right{flex:1; 
+                .con-box{
+                    .con{@include dis-flex(null, null, null, null); 
+                        .txt{flex:1; @include dis-flex(center, space-between, column, null);
+                            h1{line-height:1; @include conSize(100%, null); padding:20px; text-align:center}
+                            p{@include expl_comm(); padding:20px;}
+                        }
+                        .img-box{flex:1;
+                            img{@include conSize(100%, 100%); filter:grayscale(1);}
+                        }
+                    }
+                    .con02{
+                        .txt{order:2;}
+                    }
+                }
+            }
+        }
+    }
+}
+/*** 섹션03 끝 ***/
