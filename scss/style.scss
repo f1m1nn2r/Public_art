@@ -5,6 +5,7 @@
 $inter:'Inter', sans-serif;
 $black:#000;
 $grey:#999;
+$basic:#eee;
 $easing:cubic-bezier(0.215, 0.61, 0.355, 1);
 
 @mixin conSize($wd:null, $hg:null){width:$wd; height:$hg;}
@@ -56,7 +57,7 @@ a{text-decoration:none; color:$black;}
 /*** 헤더 끝 ***/
 
 /*** 섹션01 시작 ***/
-.section01{
+.section01{border-bottom:1px solid $black;
     &-inner{
         .top{
             .line_bx{@include conSize(null, 78px); line-height:78px; @include dis-flex(center, space-between, null, null); border-bottom:1px solid $black;
@@ -68,7 +69,7 @@ a{text-decoration:none; color:$black;}
                     &:first-child, &:last-child{column-gap:236px;}
                 }
             }
-            .b_tit{@include dis-flex(center, null, null, null); padding:10px 15px 10px 0;
+            .b_tit{@include dis-flex(center, null, null, null); padding:10px 15px 10px 0; border-bottom:1px solid $black;
                 .txt{
                     h1{line-height:147px; @include dis-flex(null, null, null, null); @include font(180px, 600, null, $black); text-transform:uppercase; letter-spacing:-2px;
                         span{@extend .span_comm; @include font(null, null, $inter, null);}
@@ -76,6 +77,30 @@ a{text-decoration:none; color:$black;}
                     }
                 }
                 .circle{@include conSize(630px, 270px); background:$black; border-radius:140px;}
+            }
+        }
+        .bot{@include dis-flex(null, null, null, null); padding:20px; column-gap:20px;
+            &-left{flex:0.6; @include dis-flex(null, null, null, null);
+                .s_txt{@include font(22px, 400, null, null); writing-mode:vertical-lr; text-orientation:sideways-right;
+                    p{
+                        &:last-child{line-height:36px}
+                    }
+                }
+                .r_txt{
+                    .img-box{
+                        img{@include conSize(100%, null); filter:grayscale(1);}
+                        .deco{@include conSize(100%, 60px); margin:20px 0 0 0; background:$black;}
+                    }
+                    .txt-box{margin:20px 0 0 0;
+                        h1{line-height:36px; @include font(22px, 400, null, null);}
+                    }
+                }
+            }
+            &-right{flex:0.4; @include dis-flex(null, null, column, 20px);
+                div{@include dis-flex(center, null, null, null); position:relative;
+                    p{position:relative; z-index:10; padding:10px; @include font(50px, 500, null, null); background:$basic; border:1px solid $black; border-right:0; border-bottom:0;}
+                    .line_dash{ @include pt_abs(absolute, null, 0, null, null, null); border-bottom:1px dashed $black;}
+                }
             }
         }
     }
