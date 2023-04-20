@@ -1,3 +1,4 @@
+// 섹션01 라인 width 값 
 var sc01_p = document.querySelectorAll('.bot-right p');
 var lineDashed = document.querySelectorAll('.bot-right .line_dash'); 
 

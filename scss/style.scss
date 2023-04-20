@@ -32,6 +32,9 @@ a{text-decoration:none; color:$black;}
 .sc01_line01{@include conSize(50px, null);}
 .sc01_line02{@include conSize(100px, null);}
 
+.border-box{@include conSize(100%, 100%); @include pt_abs(absolute, null, null, null, null, null); border:50px solid $black; border-right:0;}
+.semicircle{@include conSize(50%, 100%); @include pt_abs(absolute, 0, 0, null, null, null); border-top-left-radius:1000px; border-bottom-left-radius:1000px; mix-blend-mode:difference; background:#eee;}
+
 /*** 헤더 시작 ***/
 .at-header{@include conSize(100%, null); @include pt_abs(fixed, -100%, null, null, 0, 99); transition:all .3s $easing;
     .header-inner{@include conSize(null, 100px); line-height:100px; @include dis-flex(center, space-between, null, null); position:relative; padding:0 21px;
@@ -149,7 +152,7 @@ a{text-decoration:none; color:$black;}
                     }
                 }
             }
-            &-right{@include conSize(60px, 935px); background:$black;}
+            &-right{@include conSize(60px, 700px); background:$black;}
         }
     }
 }
@@ -160,8 +163,8 @@ a{text-decoration:none; color:$black;}
     &-inner{
         .top{@include dis-flex(null, null, null, null); border-top:1px solid $black; border-bottom:1px solid $black;
             &-left{flex:1; @include dis-flex(flex-end, null, null, null); position:relative;
-                .border-box{@include conSize(100%, 100%); @include pt_abs(absolute, null, null, null, null, null); border:50px solid $black; border-right:0;} 
-                .semicircle{@include conSize(50%, 100%); @include pt_abs(absolute, 0, 0, null, null, null); border-top-left-radius:1000px; border-bottom-left-radius:1000px; mix-blend-mode:difference; background:#eee;}
+                .border-box{@extend .border-box;} 
+                .semicircle{@extend .semicircle;}
                 h1{@include conSize(100%, null); position:relative; z-index:99; margin:0 0 -15px 50px; font-size:clamp(9rem, 9.69vw, 10vw); color:#eee; mix-blend-mode:difference;
                     p{@include dis-flex(null, null, null, null);
                         &:last-child{justify-content:flex-end; margin-right:-18%;}
@@ -181,6 +184,29 @@ a{text-decoration:none; color:$black;}
                     }
                     .con02{
                         .txt{order:2;}
+                    }
+                }
+            }
+        }
+        .bot{@include dis-flex(null, null, null, null);
+            &-left{flex:1;
+                .img-box{
+                    img{@include conSize(100%, null); filter:grayscale(1)}
+                }
+                .con-box{
+                    .txt{
+                        h1{@include conSize(100%, null); line-height:1; padding:20px; text-align:center;}
+                        .line{@include conSize(1px, 120px); margin:0 auto; background:$black;}
+                        p{@include expl_comm(); padding:20px;}
+                    }
+                }
+            }
+            &-right{flex:1; position:relative;
+                .border-box{@extend .border-box; border-left:0; border-right:50px solid $black;}
+                .semicircle{@extend .semicircle; right:auto; left:0; border-top-right-radius:1000px; border-bottom-right-radius:1000px; border-top-left-radius:0; border-bottom-left-radius:0;}
+                ul{@include conSize(null, 100%); @include dis-flex(center, center, column, null);
+                    li{
+                        a{line-height:90px; @include font(60px, 600, null, #fff); mix-blend-mode:difference;}
                     }
                 }
             }
