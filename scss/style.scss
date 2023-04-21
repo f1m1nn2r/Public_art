@@ -159,7 +159,7 @@ a{text-decoration:none; color:$black;}
 /*** 섹션02 끝 ***/
 
 /*** 섹션03 시작 ***/
-.section03{
+.section03{border-bottom:1px solid $black;
     &-inner{
         .top{@include dis-flex(null, null, null, null); border-top:1px solid $black; border-bottom:1px solid $black;
             &-left{flex:1; @include dis-flex(flex-end, null, null, null); position:relative;
@@ -214,3 +214,96 @@ a{text-decoration:none; color:$black;}
     }
 }
 /*** 섹션03 끝 ***/
+
+/*** 섹션04 시작 ***/
+.section04{position:relative;
+    &-inner{
+        .top{position:relative; border-bottom:1px solid $black;
+            &-top{flex:1; @include dis-flex(flex-end, space-between, null, 60px);
+                .deco{@include conSize(600px, 60px); background:$black;}
+                .line{@include conSize(calc(100% - 600px), 1px); margin:0 0 10px 0; background:$black;}
+            }
+            &-bot{@include conSize(calc(100% - 60px), null); @include dis-flex(flex-end, null, null, null); position:relative; margin:0 auto; margin-right:0; margin-top:-10px;
+                &-left{flex:1;
+                    .deco{@include conSize(600px, 60px); margin:0 auto; margin-right:0; margin-bottom:21px; background:$black;}
+                    h1{margin:0 0 -14px 0; text-align:right;}
+                }
+                &-right{flex:0.9553; @include dis-flex(flex-end, null, null, null);
+                    .deco{background:$black;
+                        &_01{@include conSize(60px, 150px);}
+                        &_02{@include conSize(calc(100% - 60px), 60px);}
+                        &_03{@include conSize(60px, 312px);}
+                    }
+                }
+                &::after{@extend .virtual; @include conSize(0.1px, 100%); top:0; left:calc(50% + 2px); transform:translateX(-50%); background:$black;}
+            }
+        }
+        .bot{@include dis-flex(null, null, null, null);
+            .deco{@include conSize(100%, 710px); background:$black;}
+            .artist-swap{@include conSize(calc(100% - 60px), null); position:relative; padding:0 20px 20px 0;
+                .swiper-wrapper{
+                    .swiper-slide{@include dis-flex(null, flex-end, null, 20px); padding:50px 0 0 0; overflow:hidden; background:$basic;
+                        .img-box{flex:1; position:relative;
+                            .img-crop{@include conSize(60.984%, 41.174vw); @include pt_abs(absolute, 0, 0, null, null, 1);
+                                & > div{background:$basic;}
+                                .b_box{@include conSize(0, 7.266vw); transition:width .5s $easing; transition-delay:1.2s;
+                                    &:nth-child(3), &:nth-child(7){margin:0 auto; margin-right:0;}
+                                }
+                                .line-box{@include conSize(0, 0.969vw); transition:all 0.5s $easing; transition-property:width; transition-delay:1.2s;
+                                    &:nth-child(4), &:nth-child(8){margin:0 auto; margin-right:0;}
+                                }
+                            }
+                            img{@include conSize(60.984%, null); display:block; margin:0 auto; margin-right:0; filter:grayscale(1);}
+                            &::after{@extend .virtual; @include conSize(1px, 100%); top:-50px; right:-1px; background:$black;}
+                        }
+                        .con-box{flex:0.9553; @include dis-flex(null, space-between, column, null);
+                            &-top{@include dis-flex(center, space-between, null, null);}
+                            &-bot{margin:240px 0 0 0;
+                                .txt{margin:0 0 20px 0;
+                                    p{@include font(22px, 400, $noto, $black);}
+                                    span{line-height:1; display:block; margin:8px 0 0 0; @include font(16px, 300, $noto, $black);}
+                                }
+                                .img-box{border-right:0;
+                                    &::after{display:none;}
+                                    img{@include conSize(100%, null); display:initial;}
+                                }
+                            }
+                        }
+                        &::after{@include conSize(100%, 100%); @extend .virtual; top:0; right:-100%; background:$basic;}
+                        &::before{@include conSize(100%, 100%); @extend .virtual; top:0; left:-100%; background:$basic;}
+                    }
+                    .swiper-slide-active{
+                        .img-box{
+                            .img-crop{
+                                .b_box{@include conSize(4.0207vw, null);}
+                                .line-box{@include conSize(100%, null);}
+                            }
+                            
+                        }
+                    }
+                }
+                .arrow{@include dis-flex(null, null, null, 35px); @include pt_abs(absolute, 50px, 20px, null, null, null);
+                    & > div{@include conSize(40px, 40px); display:block; position:static; margin:0; opacity:1; outline:none;
+                        span{@include conSize(100%, 100%); @extend .span_comm; @include dis-flex(center, center, null, null);
+                            &::before, &::after{@extend .virtual; @include conSize(100%, 1px); background:$black;}
+                        }
+                        &.swiper-button-prev{
+                            span{
+                                &::before{transform:rotate(45deg); margin-top:27px;}
+                                &::after{transform:rotate(-45deg); margin-bottom:27px;}
+                            }
+                        }
+                        &.swiper-button-next{
+                            span{
+                                &::before{transform:rotate(45deg); margin-bottom:27px;}
+                                &::after{transform:rotate(-45deg); margin-top:27px;}
+                            }
+                        }
+                        &.swiper-button-disabled{opacity:.5;}
+                        &::after{display:none;}
+                    }
+                }
+            }
+        }
+    }
+}
