@@ -307,3 +307,23 @@ a{text-decoration:none; color:$black;}
         }
     }
 }
+
+/*** 섹션05 시작 ***/
+.section05{background:#000;
+    &-inner{@include conSize(1120px, null); position:relative; margin:0 auto;
+        .all-menu{@include dis-flex(null, null, null, 70px); @include pt_abs(absolute, 0, null, null, 0, null);
+            .am-ul{
+                .am-li{
+                    a{line-height:50px; @include font(30px, 500, null, $basic);}
+                }
+            }
+        }
+        .circle-box{
+            .mid-circle{
+                img{background:url(./img/b5ca6f266e568fafb21f75e851e05143.jpg) center no-repeat; background-size:cover;}
+            }
+            .move-circle{@include conSize(450px, 450px); @include pt_abs(absolute, 0, 0, null, null, null); background:$basic; border-radius:50%;}
+        }
+    }
+}
+/*** 섹션05 끝 ***/
